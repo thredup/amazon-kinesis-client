@@ -1,5 +1,5 @@
 # Amazon Kinesis Client Library for Java
-[![Build Status](https://travis-ci.org/awslabs/amazon-kinesis-client.svg?branch=master)](https://travis-ci.org/awslabs/amazon-kinesis-client) ![BuildStatus](https://codebuild.us-west-2.amazonaws.com/badges?uuid=eyJlbmNyeXB0ZWREYXRhIjoiaWo4bDYyUkpWaG9ZTy9zeFVoaVlWbEwxazdicDJLcmZwUUpFWVVBM0ZueEJSeFIzNkhURzdVbUd6WUZHcGNxa3BEUzNrL0I5Nzc4NE9rbXhvdEpNdlFRPSIsIml2UGFyYW1ldGVyU3BlYyI6IlZDaVZJSTM1QW95bFRTQnYiLCJtYXRlcmlhbFNldFNlcmlhbCI6MX0%3D&branch=master)
+[![Build Status](https://travis-ci.org/awslabs/amazon-kinesis-client.svg?branch=master)](https://travis-ci.org/awslabs/amazon-kinesis-client)
 
 The **Amazon Kinesis Client Library for Java** (Amazon KCL) enables Java developers to easily consume and process data from [Amazon Kinesis][kinesis].
 
@@ -28,7 +28,10 @@ Please open an issue if you have any questions.
 
 ## Building from Source
 
-After you've downloaded the code from GitHub, you can build it using Maven. To disable GPG signing in the build, use this command: `mvn clean install -Dgpg.skip=true`
+After you've downloaded the code from GitHub, you can build it using Maven. To disable GPG signing in the build, use
+ this command: `mvn clean install -Dgpg.skip=true`. Note: This command runs Integration tests, which in turn creates AWS
+  resources (which requires manual cleanup). Integration tests require valid AWS credentials need to be discovered at
+   runtime. To skip running integration tests, add ` -DskipITs` option to the build command.  
 
 ## Integration with the Kinesis Producer Library
 For producer-side developers using the **[Kinesis Producer Library (KPL)][kinesis-guide-kpl]**, the KCL integrates without additional effort. When the KCL retrieves an aggregated Amazon Kinesis record consisting of multiple KPL user records, it will automatically invoke the KPL to extract the individual user records before returning them to the user.
@@ -60,13 +63,14 @@ The recommended way to use the KCL for Java is to consume it from Maven.
 
 ## Release Notes
 
-### Latest Release (2.2.7 - December 2, 2019)
-[Milestone#45](https://github.com/awslabs/amazon-kinesis-client/milestone/45)
-* Updating the AWS SDK version to 2.10.25
-  * [PR#657](https://github.com/awslabs/amazon-kinesis-client/pull/657)
-* Adding a configurable DynamoDB billing mode
-  * [PR#582](https://github.com/awslabs/amazon-kinesis-client/pull/582)
-
+### Latest Release (2.2.8 - January 28 2020)
+[Milestone#46](https://github.com/awslabs/amazon-kinesis-client/milestone/45)
+* Updating the AWS SDK version to 2.10.56.
+  * [PR#679](https://github.com/awslabs/amazon-kinesis-client/pull/679)
+* Making ShardConsumerTest resilient to race conditions.
+  * [PR#668](https://github.com/awslabs/amazon-kinesis-client/pull/668)
+* Updating integration test naming.
+  * [PR#667](https://github.com/awslabs/amazon-kinesis-client/pull/667)
 
 ### For remaining release notes check **[CHANGELOG.md][changelog-md]**.
 
